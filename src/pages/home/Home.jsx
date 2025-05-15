@@ -1,6 +1,9 @@
 
 import { useFetch } from '@/hooks/useFetch'
-import MovieView from '@/movie-view/MovieView';
+import Swiper1 from '@/swiper/swiper';
+import Carousel3D from '@/swiperFilms/SwiperFilms';
+import SwiperFilm from '@/swiperFilms/SwiperFilms';
+
 import React from 'react'
 
 const Home = () => {
@@ -9,7 +12,9 @@ const Home = () => {
    
   return (
     <div>
-      <MovieView data={data?.results}/>
+      <Swiper1/>
+      <Carousel3D/>
+
     </div>
   )
 }

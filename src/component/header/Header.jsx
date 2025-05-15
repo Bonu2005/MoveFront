@@ -1,9 +1,13 @@
 import React, { useState } from 'react'
+import { IoHomeOutline, IoBookmarkOutline, IoSearchOutline } from "react-icons/io5";
 import logo from "@/assets/LOGOTYPE – BILETICK.svg"
 import Vector from "@/assets/Vector.png"
 import Vector1 from "@/assets/Vector (1).png"
 import Tablet from "@/assets/tablet-line.png"
 import { FaSearch } from "react-icons/fa";
+import { NavLink } from 'react-router-dom'
+import { MdOutlineMovie } from "react-icons/md";
+
 const Header = () => {
   const [menuOpen, setMenuOpen] = useState(false)
   return (
@@ -16,21 +20,23 @@ const Header = () => {
 
         <div className='hidden md:flex'>
           <ul className='flex gap-7 items-center justify-center'>
-            <li className='flex flex-col hover:text-[#E4405F]'>
-              <div className='text-center '><img className=' text-[29px] hover:bg-primary'  src={Vector} alt="" /></div>
-              Афиша
-            </li>
-            <li className='hover:text-[#E4405F]'> 
-              <div className='text-center '><img className=' text-[29px] hover:bg-primary'   src={Tablet} alt="" /></div>
-              Сеансы
-            </li>
-            <li className='hover:text-[#E4405F]' >
-              <div className='text-center'><img className=' text-[29px] hover:bg-primary' src={Vector1} alt="" /></div>
-              Билеты
-            </li>
-            <li className='hover:text-[#E4405F]'>
-              <div className='text-center text-[22px]' ><FaSearch /></div>
-              Поиск </li>
+            <NavLink className={"flex flex-col hover:text-[#E4405F] items-center"} to={"/"} >
+              <IoHomeOutline className='text-2xl' />
+              <span>Home</span>
+            </NavLink>
+
+            <NavLink className={"flex flex-col hover:text-[#E4405F] items-center"} to={"/movies"}>
+              <MdOutlineMovie className='text-2xl' />
+              <span>Movies</span>
+            </NavLink>
+            <NavLink className={"flex flex-col hover:text-[#E4405F] items-center"} to={"/saved"}>
+              <IoBookmarkOutline className='text-2xl' />
+              <span>Saved</span>
+            </NavLink>
+            <NavLink className={"flex flex-col hover:text-[#E4405F] items-center"} to={"/search"}>
+              <IoSearchOutline className='text-2xl' />
+              <span>Search</span>
+            </NavLink>
           </ul>
         </div>
 
