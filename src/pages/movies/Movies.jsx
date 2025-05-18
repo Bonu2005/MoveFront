@@ -3,8 +3,9 @@ import React, { useCallback } from 'react'
 import Pagination from '@mui/material/Pagination';
 import { useSearchParams } from 'react-router-dom'
 import Genres from '@/component/genres/Genres';
-import { Skeleton } from '@mui/material';
 import MovieView from '@/component/movie-view/MovieView';
+import Skeleton from '@/component/skeleton/Skeleton';
+import NotFoundInfo from '@/component/notFoundInfo/NotFoundInfo';
 
 const Movies = () => {
   const [params, setParams] = useSearchParams()
@@ -13,8 +14,6 @@ const Movies = () => {
   let with_genres = genres.split("-").join(",").slice(1)
 
   const { data, error, loading } = useFetch("/discover/movie", { page, with_genres, without_genres: "18,10749,36" })
-  console.log(data);
-
 
   const handleChangeGenre = useCallback((id) => {
     let array = genres.split("-")
@@ -42,8 +41,9 @@ const Movies = () => {
       <Genres genres={genres} handleChangeGenre={handleChangeGenre} />
       {loading ? <Skeleton count={20} /> : <MovieView data={data?.results} />}
 
-      <div className='container mx-auto flex justify-center my-10'>
-        <Pagination count={data?.total_pages} page={Number(page)} onChange={handleChange} />
+      <div className='container mx-auto flex justify-center my-10 bg-gray-100 rounded-xl'>
+        {page>500 ? <NotFoundInfo/>: <Pagination count={data?.total_pages > 500 ? 500 : data?.total_pages} page={Number(page)} onChange={handleChange} />}
+         
       </div>
     </div>
   )

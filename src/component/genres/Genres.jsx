@@ -6,7 +6,7 @@ const Genres = ({ handleChangeGenre, genres }) => {
 
   const array = genres.split("-").slice(1);
   return (
-    <div className="container mx-auto py-4 flex gap-6 overflow-auto text-shadow-indigo-400">
+    <div className="container mx-auto py-4 flex gap-6 overflow-auto text-shadow-indigo-400 no-scrollbar ">
       {data?.genres?.map((genre) => (
         <div
           onClick={() => handleChangeGenre(genre.id.toString())}

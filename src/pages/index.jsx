@@ -1,9 +1,8 @@
 import { Suspense } from '@/utils'
 import React, { lazy } from 'react'
 import { useRoutes } from 'react-router-dom'
-
-
-
+import SingleMovie from './single-movie/SingleMovie'
+import NotFound from '@/component/notFOund/NotFound'
 const Layout = lazy(() => import("./layout/Layout"))
 const Home = lazy(() => import("./home/Home"))
 const Movies = lazy(() => import("./movies/Movies"))
@@ -31,6 +30,14 @@ const MainRouters = () => {
                 {
                     path: '/search',
                     element: <Suspense><Search /></Suspense>
+                },
+                {
+                    path: "/movie/:id",
+                    element: <Suspense><SingleMovie/></Suspense>
+                },
+                {
+                    path: "*",
+                    element: <Suspense><NotFound/></Suspense>
                 }
             ]
         },

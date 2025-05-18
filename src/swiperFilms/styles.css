@@ -1,16 +1,12 @@
 .carousel-container {
   position: relative;
-  width: 100%;
-  margin: 0 auto; /* ← fix this */
   max-width: 90vw;
   height: 500px;
-  perspective: 1950px;
-  user-select: none;
+  overflow: hidden; /* ← важно */
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 90px;
-  margin-top: 100px;
+  perspective: 2000px;
 }
 
 
@@ -24,42 +20,47 @@
   align-items: center;
   justify-content: center;
 }
-
-.sl {
-  position: absolute;
-  width: 340px;
-  height: 450px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transition: all 0.7s ease;
-}
 .sl:hover {
   box-shadow: 0 15px 40px rgba(180, 178, 178, 0.3);
 
 }
 
-/* Анимационные классы теперь здесь */
+.sl {
+  transform-style: preserve-3d;
+  transition: transform 0.7s ease, opacity 0.7s ease;
+  width: 400px;
+
+}
+
+.sl {
+  position: absolute;
+  transition: transform 0.7s ease, opacity 0.7s ease;
+  transform-style: preserve-3d;
+  opacity: 0;
+  z-index: 1;
+}
+
 .sl.active {
   left: 50%;
-  transform: translateX(-50%) scale(1);
+  transform: translateX(-50%) translateZ(0) rotateY(0deg);
   z-index: 3;
   opacity: 1;
 }
 
 .sl.left {
-  left: calc(50% - 370px); /* 340 + 30 отступ */
-  transform: translateX(-50%) scale(0.9);
+  left: 50%;
+  transform: translateX(-160%) translateZ(-200px) rotateY(25deg);
+  opacity: 0.7;
   z-index: 2;
-  opacity: 0.8;
 }
 
 .sl.right {
-  left: calc(50% + 370px);
-  transform: translateX(-50%) scale(0.9);
+  left: 50%;
+  transform: translateX(60%) translateZ(-200px) rotateY(-25deg);
+  opacity: 0.7;
   z-index: 2;
-  opacity: 0.8;
 }
+
 
 .sl.hidden {
   opacity: 0;
@@ -109,7 +110,7 @@
   top: 50%;
   transform: translateY(-50%);
   background: rgba(0,0,0,0.4);
-  color: rgb(197, 12, 12);
+
   border: none;
   font-size: 20px;
   cursor: pointer;
@@ -132,5 +133,67 @@ background: rgba(167, 167, 167, 0.7);
 .nav.right {
     background: rgba(167, 167, 167, 0.7);
   right: 63px;
+}
+
+
+@media (max-width: 900px) {
+  .carousel {
+    height: 280px;
+  }
+
+  .sl {
+    width: 260px;
+    height: 150px;
+  }
+
+  .sl.left {
+    transform: translateX(-140px) translateZ(0) scale(0.75);
+  }
+
+  .sl.right {
+    transform: translateX(140px) translateZ(0) scale(0.75);
+  }
+
+  .nav {
+    font-size: 2.5rem;
+  }
+}
+
+
+@media (max-width: 480px) {
+  .carousel-container {
+    max-width: 100%;
+    margin: 20px 10px;
+  }
+
+  .carousel {
+    height: 220px;
+  }
+
+  .sl {
+    width: 200px;
+    height: 120px;
+  }
+
+  .sl.left {
+    transform: translateX(-100px) translateZ(0) scale(0.7);
+  }
+
+  .sl.right {
+    transform: translateX(100px) translateZ(0) scale(0.7);
+  }
+
+  .caption h1 {
+    font-size: 1.2rem;
+  }
+
+  .caption p {
+    font-size: 0.9rem;
+  }
+
+  .nav {
+    font-size: 2rem;
+    padding: 0 8px;
+  }
 }
 

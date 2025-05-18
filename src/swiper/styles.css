@@ -73,3 +73,32 @@ body {
     overflow: hidden;
 
 }
+
+@media (max-width: 1024px) {
+  .mySwiper {
+    slides-per-view: 3 !important; 
+  }
+}
+
+
+@media (max-width: 768px) {
+  .mySwiper {
+    slides-per-view: 2 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .mySwiper {
+    slides-per-view: 1 !important;
+  }
+  .container {
+    padding: 0 5px;
+  }
+  .mySwiper2 img {
+    border-radius: 6px;
+  }
+.mySwiper2  {
+    slides-per-view: 1 !important;
+    border: 3px solid red;
+  }
+}

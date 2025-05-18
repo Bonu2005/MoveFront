@@ -17,3 +17,13 @@
     padding-right: 16px;
     margin: auto;
 }
+
+input{
+    border:none;
+    outline: none;
+    list-style: none;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}

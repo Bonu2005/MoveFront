@@ -2,14 +2,11 @@
 import { useFetch } from '@/hooks/useFetch'
 import Swiper1 from '@/swiper/swiper';
 import Carousel3D from '@/swiperFilms/SwiperFilms';
-import SwiperFilm from '@/swiperFilms/SwiperFilms';
 
 import React from 'react'
 
 const Home = () => {
-   const {data,error,loading} = useFetch("/discover/movie")
-   console.log(data);
-   
+   const {data,error,loading} = useFetch("/discover/movie")   
   return (
     <div>
       <Swiper1/>

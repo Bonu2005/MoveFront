@@ -29,6 +29,9 @@ export default function Swiper1() {
         thumbs={{ swiper: thumbsSwiper }}
         modules={[FreeMode, Navigation, Thumbs]}
         className="mySwiper2 container"
+        breakpoints={{
+
+  }}
       >
         <SwiperSlide>
           <img src={panda} />

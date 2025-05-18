@@ -1,13 +1,14 @@
 import React from 'react'
 import Card from './Card'
 
-const MovieView = ({data}) => {
-    console.log("1",data);
-    
+const MovieView = ({data}) => {   
+
+  
+   
   return (
-    <div className=' container mx-auto grid lg:grid-cols-4 gap-5 md:grid-cols-3 grid-cols-2 mb-[118px]'>
+    <div className=' container mx-auto grid lg:grid-cols-4 gap-5 md:grid-cols-3 grid-cols-2 mb-[118px] mt-28'>
         {data?.map((item)=>(
-      <Card key={item.id} item={item}/>
+      <Card key={item.id} item={item} />
         ))}
     </div>
   )
